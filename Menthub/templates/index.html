@@ -1,276 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Peer Mentoring Platform</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MentorConnect - Home</title>
+  <link rel="stylesheet" href="../static/styles.css" />
+  <script src="../static/theme.js" defer></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navigation Header -->
-    <nav class="navbar" id="navbar" style="display: none;">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-graduation-cap"></i>
-                <span>MentorConnect</span>
-            </div>
-            <div class="nav-menu">
-                <button class="nav-btn" id="dashboardBtn">
-                    <i class="fas fa-home"></i>
-                    <span>Dashboard</span>
-                </button>
-                <button class="nav-btn" id="profileBtn">
-                    <i class="fas fa-user"></i>
-                    <span>Profile</span>
-                </button>
-                <button class="nav-btn" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Login/Signup Page -->
-    <div class="page" id="authPage">
-        <div class="auth-container">
-            <div class="auth-header">
-                <h1><i class="fas fa-graduation-cap"></i> MentorConnect</h1>
-                <p>Connect, Learn, and Grow Together</p>
-            </div>
-            
-            <div class="auth-tabs">
-                <button class="tab-btn active" id="loginTab">Login</button>
-                <button class="tab-btn" id="signupTab">Sign Up</button>
-            </div>
+  <!-- Header -->
+  <header class="landing-header">
+    <h1><i class="fas fa-graduation-cap"></i> MentorConnect</h1>
+    <div class="header-actions">
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+      <a style="position: relative;  right: 50px;" href="signup.html" class="login-link">Login / Sign Up</a>
+    </div>
+  </header>
 
-            <!-- Login Form -->
-            <div class="auth-form active" id="loginForm">
-                <form id="loginFormElement">
-                    <div class="form-group">
-                        <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" name="password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-            </div>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <img src="../images/logo.png" alt="MentorConnect Logo" />
+    <h2>Connect, Learn, and Grow Together</h2>
+    <p>A peer-to-peer platform to match mentors with mentees and build stronger academic networks in college.</p>
+  </section>
 
-            <!-- Signup Form -->
-            <div class="auth-form" id="signupForm">
-                <form id="signupFormElement">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupEmail">Email</label>
-                            <input type="email" id="signupEmail" name="email" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="signupPassword">Password</label>
-                        <input type="password" id="signupPassword" name="password" required>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="department">Department</label>
-                            <select id="department" name="department" required>
-                                <option value="">Select Department</option>
-                                <option value="IT">Information Technology</option>
-                                <option value="CS">Computer Science</option>
-                                <option value="Mechanical">Mechanical Engineering</option>
-                                <option value="Electrical">Electrical Engineering</option>
-                                <option value="Civil">Civil Engineering</option>
-                                <option value="Electronics">Electronics Engineering</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="academicYear">Academic Year</label>
-                            <select id="academicYear" name="academicYear" required>
-                                <option value="">Select Year</option>
-                                <option value="1st">1st Year</option>
-                                <option value="2nd">2nd Year</option>
-                                <option value="3rd">3rd Year</option>
-                                <option value="4th">4th Year</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Role</label>
-                        <div class="radio-group">
-                            <label class="radio-label">
-                                <input type="radio" name="role" value="Mentor" required>
-                                <span>Mentor</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="role" value="Mentee" required>
-                                <span>Mentee</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="role" value="Both" required>
-                                <span>Both</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="bio">Bio (Optional)</label>
-                        <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="linkedinUrl">LinkedIn URL (Optional)</label>
-                            <input type="url" id="linkedinUrl" name="linkedinUrl" placeholder="https://linkedin.com/in/yourprofile">
-                        </div>
-                        <div class="form-group">
-                            <label for="whatsappContact">WhatsApp Contact (Optional)</label>
-                            <input type="tel" id="whatsappContact" name="whatsappContact" placeholder="+91 9876543210">
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                </form>
-            </div>
-        </div>
+  <!-- Cards Section -->
+  <section class="cards-section">
+    <div class="card">
+      <i class="fas fa-users"></i>
+      <h3>Find Mentors & Mentees</h3>
+      <p>Easily connect with students from your college who are willing to guide or need guidance.</p>
     </div>
 
-    <!-- Mentee Dashboard -->
-    <div class="page" id="menteeDashboard" style="display: none;">
-        <div class="dashboard-container">
-            <div class="dashboard-header">
-                <h1><i class="fas fa-search"></i> Find a Mentor</h1>
-                <p>Connect with experienced peers who can guide your academic journey</p>
-            </div>
-            
-            <div class="search-filters">
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="mentorSearch" placeholder="Search mentors by name or skills...">
-                </div>
-                <div class="filter-group">
-                    <select id="departmentFilter">
-                        <option value="">All Departments</option>
-                        <option value="IT">Information Technology</option>
-                        <option value="CS">Computer Science</option>
-                        <option value="Mechanical">Mechanical Engineering</option>
-                        <option value="Electrical">Electrical Engineering</option>
-                        <option value="Civil">Civil Engineering</option>
-                        <option value="Electronics">Electronics Engineering</option>
-                    </select>
-                    <select id="yearFilter">
-                        <option value="">All Years</option>
-                        <option value="2nd">2nd Year</option>
-                        <option value="3rd">3rd Year</option>
-                        <option value="4th">4th Year</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="mentors-grid" id="mentorsGrid">
-                <!-- Mentor cards will be populated by JavaScript -->
-            </div>
-        </div>
+    <div class="card">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <h3>Personalized Dashboard</h3>
+      <p>Get a dashboard tailored to your role, whether you're a mentor, mentee, or both.</p>
     </div>
 
-    <!-- Mentor Dashboard -->
-    <div class="page" id="mentorDashboard" style="display: none;">
-        <div class="dashboard-container">
-            <div class="dashboard-header">
-                <h1><i class="fas fa-users"></i> Mentorship Requests</h1>
-                <p>Review and manage incoming mentorship requests</p>
-            </div>
-            
-            <div class="availability-toggle">
-                <label class="toggle-label">
-                    <input type="checkbox" id="availabilityToggle" checked>
-                    <span class="toggle-slider"></span>
-                    <span class="toggle-text">Currently accepting new mentees</span>
-                </label>
-            </div>
-            
-            <div class="requests-container" id="requestsContainer">
-                <!-- Mentorship requests will be populated by JavaScript -->
-            </div>
-        </div>
+    <div class="card">
+      <i class="fas fa-handshake"></i>
+      <h3>Request Mentorship</h3>
+      <p>Send and manage mentorship requests with easy-to-use tools and timely notifications.</p>
     </div>
 
-    <!-- Request Mentorship Modal -->
-    <div class="modal" id="requestModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Request Mentorship</h2>
-                <button class="modal-close" id="closeModal">&times;</button>
-            </div>
-            <form id="requestForm">
-                <input type="hidden" id="mentorId" name="mentorId">
-                <div class="form-group">
-                    <label for="requestReason">Why do you want this mentor?</label>
-                    <textarea id="requestReason" name="reason" rows="4" required placeholder="Explain why you'd like to connect with this mentor..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>What kind of help are you looking for?</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="helpType" value="Academics">
-                            <span>Academics</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="helpType" value="Internships">
-                            <span>Internships</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="helpType" value="Placements">
-                            <span>Placements</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="helpType" value="Projects">
-                            <span>Projects</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="helpType" value="Clubs">
-                            <span>Clubs & Activities</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="helpType" value="Mental Support">
-                            <span>Mental Support</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="preferredTime">Preferred Time Slots</label>
-                    <select id="preferredTime" name="preferredTime" required>
-                        <option value="">Select preferred time</option>
-                        <option value="Morning">Morning (9 AM - 12 PM)</option>
-                        <option value="Afternoon">Afternoon (12 PM - 5 PM)</option>
-                        <option value="Evening">Evening (5 PM - 8 PM)</option>
-                        <option value="Weekend">Weekends</option>
-                        <option value="Flexible">Flexible</option>
-                    </select>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn btn-secondary" id="cancelRequest">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Send Request</button>
-                </div>
-            </form>
-        </div>
+    <div class="card">
+      <i class="fas fa-comments"></i>
+      <h3>Stay Connected</h3>
+      <p>Communicate with your mentors and mentees through shared platforms and links.</p>
     </div>
+  </section>
 
-    <!-- Success Toast -->
-    <div class="toast" id="successToast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">Success!</span>
-    </div>
-
-    <script src="../static/script.js"></script>
 </body>
 </html>
