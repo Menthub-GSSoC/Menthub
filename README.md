@@ -106,17 +106,6 @@ Menthub/
 
 ---
 
-## 👥 Contributors
-
-Thanks to all these wonderful people who contribute to Menthub 💖:
-
-| [@anugit24](https://github.com/anugit24)     | [@Prabhatyadav60](https://github.com/Prabhatyadav60)     | [@ParagDevda](https://github.com/ParagDevda)     | [@Radhika-dodain](https://github.com/Radhika-dodain) |
-| -------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------- |
-| [@madhujammm](https://github.com/madhujammm) | [@Aripilli-Bhavana](https://github.com/Aripilli-Bhavana) | [@Shalini22-ui](https://github.com/Shalini22-ui) | [@DivyaJain09](https://github.com/DivyaJain09)       |
-| [@denshaw-09](https://github.com/denshaw-09) | YOU? 👉 [Contribute now](#-contributing)                 |                                                  |                                                      |
-
----
-
 ## 📝 Contributing
 
 We welcome contributions from everyone! Here's how to get started:
