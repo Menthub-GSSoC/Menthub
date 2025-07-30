@@ -1,134 +1,154 @@
-# Menthub 👥📘
+# Menthub
 
-**Menthub** is a full-stack web platform designed to bridge the gap between college students seeking guidance (*mentees*) and those offering support (*mentors*) — all within the same academic environment.
+Menthub is a **full-stack web platform** designed to bridge the gap between college students seeking guidance (**mentees**) and those offering support (**mentors**)—all within the same academic environment.
 
-It enables seamless mentor-mentee connections, encourages peer-driven learning, and promotes a culture of collaboration and growth.
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
+  <img src="https://img.shields.io/github/issues/Menthub-GSSoC/Menthub" alt="Issues">
+  <img src="https://img.shields.io/github/forks/Menthub-GSSoC/Menthub" alt="Forks">
+  <img src="https://img.shields.io/github/stars/Menthub-GSSoC/Menthub" alt="Stars">
+</p>
 
+---
 
-## 🚀 Project Overview
+## 🚀 Overview
 
-Navigating college life — from academics and internships to placements and time management — can be challenging. **Menthub** was created to:
+Navigating college life—from academics and internships to placements and time management—can be overwhelming. Menthub aims to:
 
-- Help students get guidance from peers in relevant areas.
-- Enable students to **volunteer as mentors** based on their strengths.
-- Provide a smart **profile-based matching system** using machine learning.
-- Build a positive environment of support and shared growth.
+* Facilitate **peer-to-peer mentorship** within colleges.
+* Provide an **intelligent ML-based profile matching system**.
+* Enable **mentees to connect, schedule**, and learn from mentors.
+* Promote a culture of **collaboration and support**.
 
-Whether you're a first-year looking for advice or a final-year student ready to guide others — **Menthub** is for you.
+Whether you're a first-year looking for advice or a final-year student eager to give back—**Menthub is built for you**.
 
-## 🛠 Tech Stack
+---
 
-| Layer          | Technologies Used                              |
-|----------------|--------------------------------------------------|
-| **Frontend**   | HTML, CSS, JavaScript                           |
-| **Backend**    | Python, Flask                                   |
-| **Database**   | PostgreSQL, SQLAlchemy ORM                      |
-| **ML Matching**| Scikit-learn (Profile-based recommendation)     |
-| **Others**     | Git, GitHub, Jinja2 (Templating), Flask-WTF     |
+## 🧠 Key Features
 
-## 📦 Installation Instructions
+* 🔐 **Role-based login** for mentors and mentees.
+* 🧠 **ML-based profile matching** using scikit-learn.
+* 📋 **Mentor profiles** with skills, availability & ratings.
+* 📬 **Request & Scheduling** system for mentee-mentor interactions.
+* 🛡️ **Admin dashboard** for managing users & reports.
+* ⬆️ Scroll-to-top button for better UX.
 
-### ✅ Prerequisites:
-- Python 3.10+
-- PostgreSQL
-- pip (Python package manager)
+---
 
-### 🛠️ Steps:
+## 🛠️ Tech Stack
 
-# Step 1: Clone the repository
-git clone https://github.com/yourusername/menthub.git
-cd menthub
+| Layer     | Technologies Used          |
+| --------- | -------------------------- |
+| Frontend  | HTML, CSS, JavaScript      |
+| Backend   | Python, Flask              |
+| Database  | PostgreSQL, SQLAlchemy ORM |
+| ML Match  | scikit-learn               |
+| Templates | Jinja2, Flask-WTF          |
+| Dev Tools | Git, GitHub                |
 
-# Step 2: Create and activate virtual environment
+---
+
+## 📦 Installation
+
+### ✅ Prerequisites
+
+* Python 3.10+
+* PostgreSQL
+* pip
+
+### ⚙️ Steps
+
+```bash
+# Step 1: Clone repository
+git clone https://github.com/Menthub-GSSoC/Menthub.git
+cd Menthub
+
+# Step 2: Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 
 # Step 3: Install dependencies
 pip install -r requirements.txt
 
-# Step 4: Set up PostgreSQL
-# Create a database named 'menthub_db' in PostgreSQL
-# Update your .env file with DB connection string
-# Example: postgresql://username:password@localhost/menthub_db
+# Step 4: Configure PostgreSQL
+# → Create database 'menthub_db' in PostgreSQL
+# → Update your .env file with:
+# DATABASE_URL=postgresql://username:password@localhost/menthub_db
 
 # Step 5: Set environment variables
-Create a `.env` file in the root directory:
-FLASK_APP=app.py  
-FLASK_ENV=development  
-DATABASE_URL=your_postgres_connection_string  
+echo "FLASK_APP=app.py" > .env
+echo "FLASK_ENV=development" >> .env
 
-# Step 6: Run database migrations (if any)
+# Step 6: Apply DB migrations
 flask db upgrade
 
-# Step 7: Run the Flask app
+# Step 7: Run the app
 flask run
+```
+
 ---
 
-## 📁 Project Structure
+## 📁 Folder Structure
 
 ```
-menthub/
+Menthub/
 │
-├── app.py                 # Main Flask app
-├── models/                # SQLAlchemy models
-├── routes/                # Flask route handlers
-├── static/                # Static files (CSS, JS, images)
-├── templates/             # HTML templates (Jinja2)
-├── ml_model/              # Matching model files
-├── forms.py               # Flask-WTF forms
-├── requirements.txt       # Python dependencies
-└── .env                   # Environment variables (excluded in Git)
+├── app.py               # Main Flask app
+├── models/              # Database models
+├── routes/              # Backend routes
+├── static/              # CSS, JS, assets
+├── templates/           # Jinja2 templates
+├── ml_model/            # ML recommendation logic
+├── forms.py             # Flask-WTF forms
+├── requirements.txt     # Dependencies
+└── .env                 # Env variables (not in repo)
 ```
 
 ---
 
-## 🧠 Features
+## 📝 Contributing
 
-* 👥 **Role-based login** for mentors and mentees.
-* 🎯 **Intelligent profile-based matching system** using ML.
-* 📊 **Mentor profiles** with skill ratings, availability, and achievements.
-* 📬 **Request & Scheduling system** for mentees to connect with mentors.
-* 🛡 **Admin dashboard** to manage users and reports.
+We welcome contributions from everyone! Here's how to get started:
 
----
+1. **Fork** the repo
+2. **Create a branch**: `git checkout -b feature/your-feature-name`
+3. **Commit your changes**: `git commit -m 'feat: your message'`
+4. **Push to your fork**: `git push origin feature/your-feature-name`
+5. **Submit a PR**
 
-## 💡 Contribution Guidelines
-
-We welcome contributions! Here’s how you can help:
-
-1. **Fork** the repository
-2. Create a new branch (`git checkout -b feature-xyz`)
-3. Make your changes and **commit** (`git commit -m 'Add feature xyz'`)
-4. **Push** to your fork and submit a **Pull Request**
-
-> For more detailed contribution steps, refer to [CONTRIBUTING.md](CONTRIBUTING.md) (if present or can be added).
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-## 🐛 Found a Bug? Want a Feature?
+## 🐛 Issues & Enhancements
 
-* Raise an **Issue** with proper labels (bug, enhancement, good first issue, etc.)
-* Use the issue template for clarity
-* You can also suggest features using discussions tab
+Found a bug or have a feature request?
+
+* Use our [Issue Templates](.github/ISSUE_TEMPLATE) to raise:
+
+  * 🐞 Bugs
+  * 💡 Enhancements
+  * 🧪 Good First Issues
+
+Or start a conversation in the **Discussions** tab.
 
 ---
 
-## 📌 License
+## 📜 License
 
-This project is licensed under the **MIT License**.
-See [LICENSE](LICENSE) for more information.
+This project is licensed under the [MIT License](LICENSE) — feel free to use, share, and modify with attribution.
 
 ---
 
-## 👥 Acknowledgements
+## 🙌 Acknowledgements
 
-* Flask & SQLAlchemy for backend development
-* scikit-learn for recommendation logic
-* PostgreSQL for data management
-* Everyone contributing to this project ❤️
+* Flask + SQLAlchemy for backend
+* PostgreSQL for robust data handling
+* scikit-learn for ML recommendations
+* The open-source community ❤️
 
-<p align="center">
-  <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;">
-    ⬆️ Back to Top
-  </a>
-</p>
+---
+
+> "Empower, Inspire, and Grow — Together with Menthub!" 🚀
+
+---
