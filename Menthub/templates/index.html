@@ -8,6 +8,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+
+    {% if show_toast %}
+         <div class="toast">🎉 Submitted successfully!</div>
+    {% endif %}
     <!-- Navigation Header -->
     <nav class="navbar" id="navbar" style="display: none;">
         <div class="nav-container">
