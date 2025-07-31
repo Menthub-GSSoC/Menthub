@@ -1,4 +1,4 @@
-\# Contributing to Menthub
+# 🤝  Contributing to Menthub
 
 
 

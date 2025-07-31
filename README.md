@@ -10,6 +10,7 @@ It enables seamless mentor-mentee connections, encourages peer-driven learning, 
 Navigating college life — from academics and internships to placements and time management — can be challenging. **Menthub** was created to:
 
 - Help students get guidance from peers in relevant areas.
+- Enable peer-to-peer mentorship based on experience and skills.
 - Enable students to **volunteer as mentors** based on their strengths.
 - Provide a smart **profile-based matching system** using machine learning.
 - Build a positive environment of support and shared growth.
@@ -24,7 +25,7 @@ Whether you're a first-year looking for advice or a final-year student ready to 
 | **Backend**    | Python, Flask                                   |
 | **Database**   | PostgreSQL, SQLAlchemy ORM                      |
 | **ML Matching**| Scikit-learn (Profile-based recommendation)     |
-| **Others**     | Git, GitHub, Jinja2 (Templating), Flask-WTF     |
+| **Others**     | Git, GitHub, Jinja2 (templating), Flask-WTF     |
 
 ## 📦 Installation Instructions
 
@@ -137,7 +138,7 @@ We welcome contributions! Here’s how you can help:
 3. Make your changes and **commit** (`git commit -m 'Add feature xyz'`)
 4. **Push** to your fork and submit a **Pull Request**
 
-> For more detailed contribution steps, refer to [CONTRIBUTING.md](CONTRIBUTING.md) (if present or can be added).
+> For more detailed contribution steps, refer to [CONTRIBUTING.md](CONTRIBUTING.md) file (if present or can be added).
 
 ---
 
