@@ -1,5 +1,53 @@
 // Global state management
 let currentUser = null;
+let currentTheme = localStorage.getItem('theme') || 'light';
+
+// Theme management
+function initializeTheme() {
+  // Set initial theme
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  
+  // Create theme toggle button if it doesn't exist
+  const navMenu = document.querySelector('.nav-menu');
+  if (navMenu && !document.querySelector('.theme-toggle')) {
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.innerHTML = `
+      <i class="fas ${currentTheme === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>
+      <span>${currentTheme === 'dark' ? 'Light' : 'Dark'}</span>
+    `;
+    themeToggle.addEventListener('click', toggleTheme);
+    
+    // Insert before the last element (logout button)
+    const logoutBtn = navMenu.querySelector('#logoutBtn');
+    if (logoutBtn) {
+      navMenu.insertBefore(themeToggle, logoutBtn);
+    } else {
+      navMenu.appendChild(themeToggle);
+    }
+  }
+}
+
+function toggleTheme() {
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  localStorage.setItem('theme', currentTheme);
+  
+  // Update toggle button
+  const themeToggle = document.querySelector('.theme-toggle');
+  if (themeToggle) {
+    const icon = themeToggle.querySelector('i');
+    const text = themeToggle.querySelector('span');
+    
+    if (currentTheme === 'dark') {
+      icon.className = 'fas fa-sun';
+      text.textContent = 'Light';
+    } else {
+      icon.className = 'fas fa-moon';
+      text.textContent = 'Dark';
+    }
+  }
+}
 
 // --- MOCK DATA ---
 // Sample data for demonstration
@@ -132,6 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initializeApp() {
+  // Initialize theme
+  initializeTheme();
+  
   const userElement = document.body;
   const userDataString = userElement.dataset.user;
 

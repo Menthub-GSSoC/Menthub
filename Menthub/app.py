@@ -13,12 +13,9 @@ CORS(app)
 bcrypt = Bcrypt(app)
 
 # Configs
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
-if not app.config['SQLALCHEMY_DATABASE_URI']:
-    raise ValueError("SQLALCHEMY_DATABASE_URI is not set in the .env file")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI', 'sqlite:///menthub.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv(
-    'SECRET_KEY')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
 
 # Init extensions
 db.init_app(app)
@@ -26,6 +23,10 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 # Redirect to login page if user is not authenticated
 login_manager.login_view = '/login'
+
+# Create database tables
+with app.app_context():
+    db.create_all()
 
 
 @login_manager.user_loader
