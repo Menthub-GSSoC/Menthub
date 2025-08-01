@@ -1,3 +1,46 @@
+/* CSS Variables for Theme */
+:root {
+  /* Light Theme Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #667eea;
+  --accent-hover: #5a6fd8;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #d0d0d0;
+  --input-focus: #667eea;
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-gradient: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #a0aec0;
+  --border-color: #4a5568;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --accent-color: #667eea;
+  --accent-hover: #5a6fd8;
+  --success-color: #48bb78;
+  --danger-color: #f56565;
+  --warning-color: #ed8936;
+  --card-bg: #2d2d2d;
+  --input-bg: #4a5568;
+  --input-border: #4a5568;
+  --input-focus: #667eea;
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -8,20 +51,22 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--text-primary);
+  background: var(--bg-gradient);
   min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Navigation */
 .navbar {
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: var(--bg-primary);
+  box-shadow: 0 2px 10px var(--shadow-color);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-container {
@@ -40,7 +85,8 @@ body {
   gap: 10px;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #667eea;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
 }
 
 .nav-menu {
@@ -58,15 +104,63 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #666;
+  color: var(--text-secondary);
   text-decoration: none; /* Remove underline from links */
   font-size: 14px; /* Ensure consistent font size */
   font-weight: 500; /* Ensure consistent font weight */
 }
 
 .nav-btn:hover {
-  background: #f0f0f0;
-  color: #667eea;
+  background: var(--bg-secondary);
+  color: var(--accent-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: none;
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.theme-toggle i {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+  transform: rotate(180deg);
+}
+
+/* Theme Toggle Button for Auth Pages - White Text */
+#authPage .theme-toggle {
+  color: white !important;
+}
+
+#authPage .theme-toggle:hover {
+  color: white !important;
+}
+
+#authPage .theme-toggle span {
+  color: white !important;
+}
+
+#authPage .theme-toggle i {
+  color: white !important;
 }
 
 /* Page Layout */
@@ -80,13 +174,14 @@ body {
 
 /* Auth Page Styles */
 .auth-container {
-  background: white;
+  background: var(--card-bg);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px var(--shadow-color);
   padding: 40px;
   width: 100%;
   max-width: 500px;
   animation: slideUp 0.6s ease-out;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes slideUp {
@@ -106,14 +201,16 @@ body {
 }
 
 .auth-header h1 {
-  color: #667eea;
+  color: var(--accent-color);
   font-size: 2rem;
   margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 .auth-header p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .auth-tabs {
@@ -164,7 +261,8 @@ body {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .form-group input,
@@ -172,18 +270,19 @@ body {
 .form-group textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid #e1e5e9;
+  border: 2px solid var(--input-border);
   border-radius: 8px;
   font-size: 14px;
   transition: all 0.3s ease;
-  background: white;
+  background: var(--input-bg);
+  color: var(--text-primary);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--input-focus);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -227,13 +326,13 @@ body {
 }
 
 .btn-primary {
-  background: #667eea;
+  background: var(--accent-color);
   color: white;
   width: 100%;
 }
 
 .btn-primary:hover {
-  background: #5a6fd8;
+  background: var(--accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
@@ -302,11 +401,12 @@ body {
 
 /* Search and Filters */
 .search-filters {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 30px;
   margin-bottom: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-bar {
@@ -319,21 +419,24 @@ body {
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  color: #666;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .search-bar input {
   width: 100%;
   padding: 16px 16px 16px 50px;
-  border: 2px solid #e1e5e9;
+  border: 2px solid var(--input-border);
   border-radius: 12px;
   font-size: 16px;
   transition: all 0.3s ease;
+  background: var(--input-bg);
+  color: var(--text-primary);
 }
 
 .search-bar input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--input-focus);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -345,11 +448,13 @@ body {
 
 .filter-group select {
   padding: 12px 16px;
-  border: 2px solid #e1e5e9;
+  border: 2px solid var(--input-border);
   border-radius: 8px;
   font-size: 14px;
-  background: white;
+  background: var(--input-bg);
+  color: var(--text-primary);
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* Mentor Cards Grid */
@@ -360,18 +465,18 @@ body {
 }
 
 .mentor-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 25px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px var(--shadow-color);
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
 
 .mentor-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: #667eea;
+  box-shadow: 0 15px 35px var(--shadow-color);
+  border-color: var(--accent-color);
 }
 
 .mentor-header {
@@ -395,20 +500,23 @@ body {
 }
 
 .mentor-info h3 {
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.3rem;
   margin-bottom: 5px;
+  transition: color 0.3s ease;
 }
 
 .mentor-info p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
 .mentor-bio {
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 20px;
+  transition: color 0.3s ease;
 }
 
 .mentor-skills {
@@ -463,11 +571,12 @@ body {
 
 /* Availability Toggle */
 .availability-toggle {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .toggle-label {
@@ -512,7 +621,8 @@ input[type="checkbox"] {
 
 .toggle-text {
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 /* Request Cards */
@@ -523,10 +633,10 @@ input[type="checkbox"] {
 }
 
 .request-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-color);
   transition: all 0.3s ease;
 }
 
@@ -538,14 +648,16 @@ input[type="checkbox"] {
 }
 
 .request-info h3 {
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.2rem;
   margin-bottom: 5px;
+  transition: color 0.3s ease;
 }
 
 .request-info p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
 .request-status {
@@ -571,12 +683,13 @@ input[type="checkbox"] {
 }
 
 .request-reason {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .request-help-types {
@@ -629,13 +742,14 @@ input[type="checkbox"] {
 }
 
 .modal-content {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   width: 100%;
   max-width: 500px;
   max-height: 90vh;
   overflow-y: auto;
   animation: slideUp 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .modal-header {
@@ -647,8 +761,9 @@ input[type="checkbox"] {
 }
 
 .modal-header h2 {
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .modal-close {
@@ -656,15 +771,15 @@ input[type="checkbox"] {
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #666;
+  color: var(--text-secondary);
   padding: 5px;
   border-radius: 50%;
   transition: all 0.3s ease;
 }
 
 .modal-close:hover {
-  background: #f0f0f0;
-  color: #333;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .modal form {

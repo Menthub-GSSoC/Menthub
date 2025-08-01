@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <!-- Theme Toggle for Auth Pages -->
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        <button class="theme-toggle" id="authThemeToggle">
+            <i class="fas fa-moon"></i>
+            <span>Dark</span>
+        </button>
+    </div>
     <div class="page" id="authPage">
         <div class="auth-container">
             <div class="auth-header">
@@ -32,6 +39,43 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // Theme management for auth pages
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        
+        function initializeAuthTheme() {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            updateAuthThemeToggle();
+        }
+        
+        function updateAuthThemeToggle() {
+            const themeToggle = document.getElementById('authThemeToggle');
+            const icon = themeToggle.querySelector('i');
+            const text = themeToggle.querySelector('span');
+            
+            if (currentTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+                text.textContent = 'Light';
+            } else {
+                icon.className = 'fas fa-moon';
+                text.textContent = 'Dark';
+            }
+        }
+        
+        function toggleAuthTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            updateAuthThemeToggle();
+        }
+        
+        // Initialize theme and add event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAuthTheme();
+            document.getElementById('authThemeToggle').addEventListener('click', toggleAuthTheme);
+        });
+    </script>
 </body>
 
 </html>

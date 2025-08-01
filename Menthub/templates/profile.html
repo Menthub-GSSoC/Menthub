@@ -22,10 +22,14 @@
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="/profile" class="nav-btn" style="background: #f0f0f0; color: #667eea;"> <!-- Active style -->
+                <a href="/profile" class="nav-btn" style="background: var(--bg-secondary); color: var(--accent-color);"> <!-- Active style -->
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
+                <button class="theme-toggle" id="profileThemeToggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark</span>
+                </button>
                 <a href="/logout" class="nav-btn">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
@@ -126,6 +130,43 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // Theme management for profile page
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        
+        function initializeProfileTheme() {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            updateProfileThemeToggle();
+        }
+        
+        function updateProfileThemeToggle() {
+            const themeToggle = document.getElementById('profileThemeToggle');
+            const icon = themeToggle.querySelector('i');
+            const text = themeToggle.querySelector('span');
+            
+            if (currentTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+                text.textContent = 'Light';
+            } else {
+                icon.className = 'fas fa-moon';
+                text.textContent = 'Dark';
+            }
+        }
+        
+        function toggleProfileTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            updateProfileThemeToggle();
+        }
+        
+        // Initialize theme and add event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProfileTheme();
+            document.getElementById('profileThemeToggle').addEventListener('click', toggleProfileTheme);
+        });
+    </script>
 </body>
 
 </html>
