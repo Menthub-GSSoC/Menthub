@@ -887,3 +887,15 @@ input[type="checkbox"] {
   font-size: 1rem;
   line-height: 1.6;
 }
+.toast {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin: 15px auto;
+    width: fit-content;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #badbcc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
