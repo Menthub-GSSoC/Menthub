@@ -13,8 +13,7 @@ db.init_app(app)
 @app.route("/")
 def home():
     return render_template("home.html", show_toast=True)
-    return render_template("home.html", show_toast=False)
-
+   
 
 
 if __name__ == "__main__":
