@@ -184,6 +184,53 @@ body {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
+/* Password Toggle Styles */
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 58%;
+  transform: translateY(-15%);
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.toggle-password:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.toggle-password i {
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.password-container input[type="password"] {
+  padding-right: 45px;
+}
+
+.password-container input[type="text"] {
+  padding-right: 45px;
+}
+
 .radio-group,
 .checkbox-group {
   display: flex;
@@ -832,6 +879,20 @@ input[type="checkbox"] {
 
   .search-bar input {
     padding: 14px 14px 14px 45px;
+  }
+
+  .toggle-password {
+    width: 28px;
+    height: 28px;
+  }
+
+  .toggle-password i {
+    font-size: 16px;
+  }
+
+  .password-container input[type="password"],
+  .password-container input[type="text"] {
+    padding-right: 50px;
   }
 }
 

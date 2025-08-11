@@ -2,6 +2,7 @@
 let currentUser = null
 let mentors = []
 let mentorshipRequests = []
+let passwordToggleInitialized = false
 
 // Sample data for demonstration
 const sampleMentors = [
@@ -129,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeApp()
   setupEventListeners()
   loadSampleData()
+  setupPasswordToggles()
 })
 
 function initializeApp() {
@@ -173,11 +175,38 @@ function setupEventListeners() {
   // Availability toggle
   document.getElementById("availabilityToggle").addEventListener("change", toggleAvailability)
 
+  // Password toggle handled by a single delegated listener; no per-tab setup needed
+
   // Close modal when clicking outside
   document.getElementById("requestModal").addEventListener("click", function (e) {
     if (e.target === this) {
       closeModal()
     }
+  })
+}
+
+function setupPasswordToggles() {
+  if (passwordToggleInitialized) return
+  passwordToggleInitialized = true
+
+  // One-time delegated listener works for both login and signup tabs
+  document.addEventListener('click', function (e) {
+    const toggle = e.target.closest('.toggle-password')
+    if (!toggle) return
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    const container = toggle.closest('.password-container')
+    const passwordInput = container ? container.querySelector('input[type="password"], input[type="text"]') : null
+    const icon = toggle.querySelector('i')
+
+    if (!passwordInput || !icon) return
+
+    const toText = passwordInput.type === 'password'
+    passwordInput.type = toText ? 'text' : 'password'
+    icon.classList.toggle('fa-eye', !toText)
+    icon.classList.toggle('fa-eye-slash', toText)
   })
 }
 
@@ -198,6 +227,8 @@ function switchAuthTab(tab) {
     signupForm.classList.add("active")
     loginForm.classList.remove("active")
   }
+  
+  // No need to re-initialize password toggles; listener is delegated and initialized once
 }
 
 function handleLogin(e) {
