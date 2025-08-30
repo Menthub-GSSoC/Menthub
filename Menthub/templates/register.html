@@ -1,80 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up - MentorConnect</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - MentorConnect</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
+    <body> 
+        <div class="register-page">
+            <div class="auth-wrapper">
+                <div class="auth-split">
+                    
+                    <!-- Left Side -->
+                    <div class="auth-left">
+                        <div class="brand">
+                            <img src="/static/pic1.png" height="350px" width="100%">
+                        </div>
+                        <h4>Mentor Hub</h4>
+                        <p>Connect, learn and grow together</p>
+                    </div>
 
-<body>
-    <div class="page" id="authPage">
-        <div class="auth-container">
-            <div class="auth-header">
-                <h1><i class="fas fa-graduation-cap"></i> MentorConnect</h1>
-                <p>Connect, Learn, and Grow Together</p>
-            </div> <!-- Flash messages for errors --> {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %} {% for category, message in messages %} <div
-                style="color: red; text-align: center; margin-bottom: 15px;">{{ message }}</div> {% endfor %} {% endif
-            %} {% endwith %} <!-- Signup Form -->
-            <div class="auth-form active">
-                <form method="POST" action="{{ url_for('register') }}">
-                    <div class="form-row">
-                        <div class="form-group"> <label for="fullName">Full Name</label> <input type="text"
-                                id="fullName" name="fullName" required> </div>
-                        <div class="form-group"> <label for="signupEmail">Email</label> <input type="email"
-                                id="signupEmail" name="email" required> </div>
-                    </div>
-                    <div class="form-group"> <label for="signupPassword">Password</label> <input type="password"
-                            id="signupPassword" name="password" required> </div>
-                    <div class="form-row">
-                        <div class="form-group"> <label for="department">Department</label> <select id="department"
-                                name="department" required>
-                                <option value="">Select Department</option>
-                                <option value="IT">Information Technology</option>
-                                <option value="CS">Computer Science</option>
-                                <option value="Mechanical">Mechanical Engineering</option>
-                                <option value="Electrical">Electrical Engineering</option>
-                                <option value="Civil">Civil Engineering</option>
-                                <option value="Electronics">Electronics Engineering</option>
-                            </select> </div>
-                        <div class="form-group"> <label for="academicYear">Academic Year</label> <select
-                                id="academicYear" name="academicYear" required>
-                                <option value="">Select Year</option>
-                                <option value="1st">1st Year</option>
-                                <option value="2nd">2nd Year</option>
-                                <option value="3rd">3rd Year</option>
-                                <option value="4th">4th Year</option>
-                            </select> </div>
-                    </div>
-                    <div class="form-group"> <label>Role</label>
-                        <div class="radio-group"> <label class="radio-label"> <input type="radio" name="role"
-                                    value="Mentor" required> <span>Mentor</span> </label> <label class="radio-label">
-                                <input type="radio" name="role" value="Mentee" required> <span>Mentee</span> </label>
-                            <label class="radio-label"> <input type="radio" name="role" value="Both" required>
-                                <span>Both</span> </label>
+                    <!-- Right Side -->
+                    <div class="auth-right scrollable">
+                        
+                        <!-- Title -->
+                        <div class="login-header">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h2>Ment<span class="highlight">Hub</span></h2>
+                        </div>
+
+                        <!-- Register Form -->
+                        <div class="login-box">
+                            <form method="POST" action="{{ url_for('register') }}">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fullName">Full Name</label>
+                                        <input type="text" id="fullName" name="fullName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signupEmail">Email</label>
+                                    <input type="email" id="signupEmail" name="email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="signupPassword">Password</label>
+                                    <input type="password" id="signupPassword" name="password" required>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="department">Department</label>
+                                        <select id="department" name="department" required>
+                                            <option value="">Select Department</option>
+                                            <option value="IT">Information Technology</option>
+                                            <option value="CS">Computer Science</option>
+                                            <option value="Mechanical">Mechanical Engineering</option>
+                                            <option value="Electrical">Electrical Engineering</option>
+                                            <option value="Civil">Civil Engineering</option>
+                                            <option value="Electronics">Electronics Engineering</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="academicYear">Academic Year</label>
+                                        <select id="academicYear" name="academicYear" required>
+                                            <option value="">Select Year</option>
+                                            <option value="1st">1st Year</option>
+                                            <option value="2nd">2nd Year</option>
+                                            <option value="3rd">3rd Year</option>
+                                            <option value="4th">4th Year</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Role</label>
+                                    <div class="radio-group">
+                                        <label class="radio-label"><input type="radio" name="role" value="Mentor" required> Mentor</label>
+                                        <label class="radio-label"><input type="radio" name="role" value="Mentee" required> Mentee</label>
+                                        <label class="radio-label"><input type="radio" name="role" value="Both" required> Both</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bio">Bio (Optional)</label>
+                                    <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="linkedinUrl">LinkedIn URL (Optional)</label>
+                                        <input type="url" id="linkedinUrl" name="linkedinUrl" placeholder="https://linkedin.com/in/yourprofile">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="whatsappContact">WhatsApp Contact (Optional)</label>
+                                        <input type="tel" id="whatsappContact" name="whatsappContact" placeholder="+91 123456789" maxlength="14">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-signin">Sign Up</button>
+                            </form>
+
+                            <!-- Login link -->
+                            <p class="create-account">
+                                Already have an account? <a href="{{ url_for('login') }}">Login</a>
+                            </p>
                         </div>
                     </div>
-                    <div class="form-group"> <label for="bio">Bio (Optional)</label> <textarea id="bio" name="bio"
-                            rows="3" placeholder="Tell us about yourself..."></textarea> </div>
-                    <div class="form-row">
-                        <div class="form-group"> <label for="linkedinUrl">LinkedIn URL (Optional)</label> <input
-                                type="url" id="linkedinUrl" name="linkedinUrl"
-                                placeholder="https://linkedin.com/in/yourprofile"> </div>
-                        <div class="form-group"> <label for="whatsappContact">WhatsApp Contact (Optional)</label> <input
-                                type="tel" id="whatsappContact" name="whatsappContact" placeholder="+91 9876543210" maxlength="14">
-                        </div>
-                    </div> <button type="submit" class="btn btn-primary">Sign Up</button>
-                </form>
-                <p style="text-align: center; margin-top: 20px;"> Already have an account? <a
-                        href="{{ url_for('login') }}">Login</a> </p>
+                </div>
             </div>
         </div>
-    </div>
-
-    <script src="{{ url_for('static', filename='validation.js') }}"></script>
-</body>
-
+    </body>
 </html>

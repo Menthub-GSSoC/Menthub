@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - MentHub</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - MentorConnect</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
+    <body>
+        <div class="auth-wrapper">
+            <div class="auth-split">
+                
+                <!-- Left Side -->
+                <div class="auth-left">
+                    <div class="brand">
+                        <img src="/static/pic1.png", height="350px", width="100%">
+                    </div>
+                    <h4>Mentor Hub</h4>
+                    <p>Connect, learn and grow together</p>
 
-<body>
-    <div class="page" id="authPage">
-        <div class="auth-container">
-            <div class="auth-header">
-                <h1><i class="fas fa-graduation-cap"></i> MentorConnect</h1>
-                <p>Welcome back! Please login to your account.</p>
-            </div> <!-- Flash messages for errors --> {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %} {% for category, message in messages %} <div
-                style="color: red; text-align: center; margin-bottom: 15px;">{{ message }}</div> {% endfor %} {% endif
-            %} {% endwith %} <!-- Login Form -->
-            <div class="auth-form active">
-                <form method="POST" action="{{ url_for('login') }}">
-                    <div class="form-group"> <label for="loginEmail">Email</label> <input type="email" id="loginEmail"
-                            name="email" required> </div>
-                    <div class="form-group"> <label for="loginPassword">Password</label> <input type="password"
-                            id="loginPassword" name="password" required> </div> <button type="submit"
-                        class="btn btn-primary">Login</button>
-                </form>
-                <p style="text-align: center; margin-top: 20px;"> Don't have an account? <a
-                        href="{{ url_for('register') }}">Sign Up</a> </p>
+                </div>
+
+                <!-- Right Side -->
+                <div class="auth-right no-scroll" >
+                    <div class="login-box">
+                        
+                        <!-- Title -->
+                        <div class="login-header">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h2>Ment<span class="highlight">Hub</span></h2>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form method="POST" action="{{ url_for('login') }}">
+                            <div class="form-group">
+                                <label for="loginEmail">Username or Email</label>
+                                <input type="text" id="loginEmail" name="email" required>
+                            </div>
+
+                            <div class="form-group password-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" name="password" required>
+                                <div class="forgot-password">
+                                    <a href="#">Forgot password?</a>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-signin">Sign In</button>
+                        </form>
+
+                        <!-- Divider -->
+                        <div class="divider">
+                            <span>or</span>
+                        </div>
+
+                        <!-- Google Sign-in -->
+                        <button class="btn-google">
+                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" class="google-icon"  height="15px">
+                            Sign in with Google
+                        </button>
+
+                        <!-- Sign-up link -->
+                        <p class="create-account">
+                            Are you new? <a href="{{ url_for('register') }}">Create an account</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>
