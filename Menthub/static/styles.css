@@ -1095,4 +1095,11 @@ textarea.invalid {
   }
 }
 
+@media (max-width: 900px) {
+  .form-row {
+    grid-template-columns: 1fr;  
+    gap: 10px;
+  }
+}
+
 
